@@ -1,7 +1,5 @@
 ☕ CozyVim
 
-> A cozy and powerful Neovim setup — lightweight, sharp and extensible. CozyVim
-
 > A cozy and powerful Neovim setup — lightweight, sharp and extensible.
 
 ## ✨ Features
@@ -29,7 +27,8 @@ nvim
 
 Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — bootstrap happens automatically.
 
-## 🗝 Custom Keybindings
+<details>
+<summary>## 🗝 Custom Keybindings</summary>
 
 | Shortcut        | Action                      |
 | --------------- | --------------------------- |
@@ -60,7 +59,6 @@ Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — boo
 
 ## 📸 Preview
 
-i
 ![CozyVim Screenshot](./screenshot1.png)
 ![CozyVim Screenshot 2](./screenshot2.png)
 

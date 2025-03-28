@@ -43,21 +43,20 @@ return { -- 🌈 THEME
                             require("neo-tree.sources.filesystem.commands").open(state)
                         end
                     end,
-                    -- opens file or unfolds folder
-                    ["h"] = "close_node", -- folds folder
+                    ["h"] = "close_node", -- pliega la carpeta
                     ["P"] = {
                         "toggle_preview",
                         config = {
                             use_float = false,
                             use_image_nvim = false
                         }
-                    }, -- Preview (normal)
+                    }, -- Vista previa (normal)
                     ["O"] = function(state)
                         local node = state.tree:get_node()
                         if node.type == "file" then
                             vim.cmd("tabnew " .. node.path)
                         end
-                    end -- open in new tab
+                    end -- abrir en nueva pestaña
                 }
             },
             filesystem = {
@@ -65,14 +64,29 @@ return { -- 🌈 THEME
                     visible = true,
                     hide_dotfiles = false,
                     hide_gitignored = false
-                }
+                },
+                follow_current_file = {
+                    enabled = true -- Activar para seguir el archivo actual
+                },
+                use_libuv_file_watcher = true, -- Detecta cambios en el sistema de archivos
+                hijack_netrw_behavior = "open_current" -- Toma control de Netrw
             }
         })
 
-        -- Keymap to open NeoTree
+        -- Asignación de tecla para abrir NeoTree
         vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {
-            desc = "NeoTree Toggle"
+            desc = "Alternar NeoTree"
         })
+
+        -- Forzar la actualización de NeoTree cada vez que se abre un archivo
+        -- vim.api.nvim_create_autocmd("BufRead", {
+        --     pattern = "*",
+        --     callback = function()
+        --         -- Forzar que NeoTree se actualice
+        --         vim.cmd("Neotree refresh")
+        --     end
+        -- })
+
     end
 }, -- ⌨️ WHICH-KEY
 {
@@ -189,7 +203,7 @@ return { -- 🌈 THEME
             end
             return ""
         end
-
+        vim.opt.laststatus = 3
         require("lualine").setup({
             options = {
                 theme = "auto",
@@ -413,14 +427,15 @@ return { -- 🌈 THEME
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "dashboard",
                 callback = function()
-                    vim.cmd("IBLDisable") -- Si usas indent-blankline (v3+)
+                    vim.cmd("IBLDisable")
                 end
             }),
 
             theme = "hyper",
             shortcut_type = "number",
             config = {
-                header = {"███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
+                header = {"  ~ C o z y ~", "",
+                          "███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
                           "████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
                           "██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
                           "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
@@ -457,7 +472,21 @@ return { -- 🌈 THEME
                     limit = 5,
                     icon = " ",
                     label = "Recent projects",
-                    action = "Telescope find_files cwd="
+                    action = function(path)
+                        vim.cmd('lcd ' .. path)
+                        vim.cmd("tabenew")
+
+                        require('neo-tree.command').execute({
+                            source = "filesystem",
+                            position = "left",
+                            action = "focus",
+                            dir = path
+                        })
+                        require('telescope.builtin').find_files({
+                            cwd = path
+                        })
+
+                    end
                 },
                 mru = {
                     limit = 5,

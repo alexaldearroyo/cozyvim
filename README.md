@@ -1,4 +1,6 @@
-# 🧠 CozyVim
+☕ CozyVim
+
+> A cozy and powerful Neovim setup — lightweight, sharp and extensible. CozyVim
 
 > A cozy and powerful Neovim setup — lightweight, sharp and extensible.
 

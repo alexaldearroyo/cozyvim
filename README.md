@@ -1,4 +1,4 @@
-☕ CozyVim
+<span style="font-size: 48px;"><span style="color:#FF6F61">C</span><span style="color:#FFB347">o</span><span style="color:#FFD700">z</span><span style="color:#77DD77">y</span><span style="color:#89CFF0">V</span><span style="color:#9370DB">i</span><span style="color:#FF69B4">m</span>
 
 > A cozy and powerful Neovim setup — lightweight, sharp and extensible.
 
@@ -27,8 +27,15 @@ nvim
 
 Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — bootstrap happens automatically.
 
+## 📸 Preview
+
+![CozyVim Screenshot](./screenshot.png)
+![CozyVim Screenshot 2](./screenshot2.png)
+
+## 🗝 Custom Keybindings
+
 <details>
-<summary>## 🗝 Custom Keybindings</summary>
+<summary>Toggle List</summary>
 
 | Shortcut        | Action                      |
 | --------------- | --------------------------- |
@@ -57,10 +64,7 @@ Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — boo
 | `<leader>k`     | Scroll up (half page)       |
 | `<leader>j`     | Scroll down (half page)     |
 
-## 📸 Preview
-
-![CozyVim Screenshot](./screenshot1.png)
-![CozyVim Screenshot 2](./screenshot2.png)
+</details>
 
 ## ⚙ Requirements
 
@@ -82,4 +86,5 @@ Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — boo
 
 ---
 
-© 2025 Alex Arroyo
+<br>
+<p align="center">© 2025 Alex Arroyo</p>

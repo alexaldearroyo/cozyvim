@@ -29,7 +29,7 @@ Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — boo
 
 ## 📸 Preview
 
-![CozyVim Screenshot](./screenshot.png)
+![CozyVim Screenshot](./dashboard.png)
 ![CozyVim Screenshot 2](./screenshot2.png)
 
 ## 🗝 Custom Keybindings

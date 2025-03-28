@@ -125,12 +125,20 @@ keymap({"n", "v"}, "za", "zM", {
 })
 
 -- 📐 Splits
-keymap("n", {"<leader>sj", "<leader>sk"}, ":vsplit<CR>", {
-    desc = "Split vertically"
+keymap("n", "<leader>sj", ":vsplit<CR>", {
+    desc = "Split vertical"
 })
-keymap("n", {"<leader>sh", "<leader>sl"}, ":split<CR>", {
-    desc = "Split horizontally"
+keymap("n", "<leader>sk", ":vsplit<CR>", {
+    desc = "Split vertical"
 })
+
+keymap("n", "<leader>sh", ":split<CR>", {
+    desc = "Split horizontal"
+})
+keymap("n", "<leader>sl", ":split<CR>", {
+    desc = "Split horizontal"
+})
+
 keymap("n", "<leader>sx", "<C-w>c", {
     desc = "Close split"
 })

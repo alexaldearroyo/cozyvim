@@ -499,7 +499,7 @@ return { -- 🌈 THEME
                     key = "f"
                 }, {
                     icon = " ",
-                    desc = "Update plugins ",
+                    desc = "Update ",
                     group = "@property",
                     action = "Lazy update",
                     key = "u"
@@ -1951,4 +1951,3 @@ return { -- 🌈 THEME
     }
 }}
 // End of file lua/plugins/init.lua
-

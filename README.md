@@ -1,4 +1,4 @@
-<span style="font-size: 48px;"><span style="color:#FF6F61">C</span><span style="color:#FFB347">o</span><span style="color:#FFD700">z</span><span style="color:#77DD77">y</span><span style="color:#89CFF0">V</span><span style="color:#9370DB">i</span><span style="color:#FF69B4">m</span>
+# ~ Cozy Vim ~
 
 > A cozy and powerful Neovim setup — lightweight, sharp and extensible.
 

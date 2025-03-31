@@ -18,11 +18,20 @@
 - 💬 Smooth notifications ([noice.nvim](https://github.com/folke/noice.nvim) + [nvim-notify](https://github.com/rcarriga/nvim-notify))
 - 🎮 Custom keymaps for fast navigation, folding, splits and more
 
-## 🚀 Quickstart
+## 🚀 Install
 
-```bash
-git clone https://github.com/alexaldearroyo/cozyvim ~/.config/nvim
-nvim
+> Install requires Neovim 0.9+. Always review the code before installing a configuration.
+
+Clone the repository and install the plugins:
+
+```sh
+git clone git@github.com:alexaldearroyo/cozyvim ~/.config/alexaldearroyo/cozyvim
+```
+
+Open Neovim with this config:
+
+```sh
+NVIM_APPNAME=alexaldearroyo/cozyvim/ nvim
 ```
 
 Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — bootstrap happens automatically.
@@ -86,5 +95,4 @@ Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim) — boo
 
 ---
 
-<br>
 <p align="center">© 2025 Alex Arroyo</p>

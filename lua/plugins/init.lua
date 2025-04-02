@@ -622,4 +622,14 @@ return { -- 🌈 THEME
         "<cmd>MarkdownPreview<CR>",
         desc = "Markdown Preview"
     }}
+}, -- 🤖 AI
+{
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+        vim.cmd([[
+        imap <silent><script><expr> <leader>i copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
+      ]])
+    end
 }}

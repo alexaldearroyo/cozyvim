@@ -43,20 +43,20 @@ return { -- 🌈 THEME
                             require("neo-tree.sources.filesystem.commands").open(state)
                         end
                     end,
-                    ["h"] = "close_node", -- pliega la carpeta
+                    ["h"] = "close_node", -- fold the folder
                     ["P"] = {
                         "toggle_preview",
                         config = {
                             use_float = false,
                             use_image_nvim = false
                         }
-                    }, -- Vista previa (normal)
+                    }, -- Preview (normal)
                     ["O"] = function(state)
                         local node = state.tree:get_node()
                         if node.type == "file" then
                             vim.cmd("tabnew " .. node.path)
                         end
-                    end -- abrir en nueva pestaña
+                    end -- open in new tab
                 }
             },
             filesystem = {
@@ -66,23 +66,23 @@ return { -- 🌈 THEME
                     hide_gitignored = false
                 },
                 follow_current_file = {
-                    enabled = true -- Activar para seguir el archivo actual
+                    enabled = true -- Enable to follow current file
                 },
-                use_libuv_file_watcher = true, -- Detecta cambios en el sistema de archivos
-                hijack_netrw_behavior = "open_current" -- Toma control de Netrw
+                use_libuv_file_watcher = true, -- Detects filesystem changes
+                hijack_netrw_behavior = "open_current" -- Takes control of Netrw
             }
         })
 
-        -- Asignación de tecla para abrir NeoTree
+        -- Key mapping to open NeoTree
         vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {
-            desc = "Alternar NeoTree"
+            desc = "Toggle NeoTree"
         })
 
-        -- Forzar la actualización de NeoTree cada vez que se abre un archivo
+        -- Force NeoTree update every time a file is opened
         -- vim.api.nvim_create_autocmd("BufRead", {
         --     pattern = "*",
         --     callback = function()
-        --         -- Forzar que NeoTree se actualice
+        --         -- Force NeoTree to update
         --         vim.cmd("Neotree refresh")
         --     end
         -- })
@@ -566,4 +566,60 @@ return { -- 🌈 THEME
     opts = {
         scroll = {}
     }
+}, -- 📝 MARKDOWN INTEGRACIÓN TIPO OBSIDIAN
+{
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {"nvim-lua/plenary.nvim"},
+    opts = {
+        dir = "~/Documents/Notas", -- Cambia esto a tu vault !!
+        daily_notes = {
+            folder = "diario"
+        },
+        completion = {
+            nvim_cmp = true
+        }
+    },
+    keys = {{
+        "<leader>oo",
+        "<cmd>ObsidianQuickSwitch<CR>",
+        desc = "Obsidian: Open note"
+    }, {
+        "<leader>on",
+        "<cmd>ObsidianNew<CR>",
+        desc = "Obsidian: New note"
+    }, {
+        "<leader>od",
+        "<cmd>ObsidianToday<CR>",
+        desc = "Obsidian: Daily note"
+    }, {
+        "<leader>ob",
+        "<cmd>ObsidianBacklinks<CR>",
+        desc = "Obsidian: Backlinks"
+    }, {
+        "<leader>of",
+        "<cmd>ObsidianFollowLink<CR>",
+        desc = "Obsidian: Follow link"
+    }}
+}, {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {"nvim-treesitter/nvim-treesitter"},
+    ft = "markdown",
+    config = true
+}, {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = {"markdown"},
+    config = function()
+        vim.g.mkdp_auto_start = 0
+        vim.g.mkdp_auto_close = 1
+        vim.g.mkdp_theme = "dark"
+    end,
+    keys = {{
+        "<leader>P",
+        "<cmd>MarkdownPreview<CR>",
+        desc = "Markdown Preview"
+    }}
 }}

@@ -143,6 +143,18 @@ return { -- 🌈 THEME
     config = function()
         local lspconfig = require("lspconfig")
 
+        -- Diagnóstico inline tipo VSCode
+        vim.diagnostic.config({
+            virtual_text = {
+                prefix = "●",
+                spacing = 2
+            },
+            signs = true,
+            underline = true,
+            update_in_insert = false,
+            severity_sort = true
+        })
+
         -- Languages
         lspconfig.lua_ls.setup({})
         lspconfig.ts_ls.setup({})
@@ -325,19 +337,6 @@ return { -- 🌈 THEME
     "folke/trouble.nvim",
     dependencies = {"nvim-tree/nvim-web-devicons"},
     opts = {},
-    config = function()
-        vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = {"*.lua", "*.ts", "*.js", "*.py", "*.json", "*.css", "*.md"},
-            callback = function()
-                local diagnostics = vim.diagnostic.get(0)
-                if #diagnostics > 0 then
-                    vim.cmd("TroubleOpen document_diagnostics")
-                else
-                    vim.cmd("TroubleClose")
-                end
-            end
-        })
-    end,
     keys = {{
         "<leader>rx",
         function()
@@ -369,7 +368,6 @@ return { -- 🌈 THEME
         end,
         desc = "TODOs"
     }}
-
 }, {
     "lewis6991/gitsigns.nvim",
     config = function()
